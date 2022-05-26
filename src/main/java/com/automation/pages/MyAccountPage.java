@@ -49,7 +49,7 @@ public class MyAccountPage extends Utility {
     @FindBy(xpath = "//header/div[3]/div[1]/div[1]/div[3]/div[1]/a[1]")
     WebElement shoppingCartButton;
     @CacheLookup
-    @FindBy(xpath = "//b[contains(text(),'Cart')]")
+    @FindBy(xpath = "//p/a/span[contains(text(),'Check out')]")
     WebElement checkOutButton;
 
     @CacheLookup
@@ -98,7 +98,7 @@ public class MyAccountPage extends Utility {
     @CacheLookup
     @FindBy(xpath = "//div[@id='contact-link']/a")
     WebElement contactUsButton;
-    
+
     public void clickOnMyAddressButton() {
         clickOnElement(myAddressButton);
         log.info("Clicking on My Address Button " + myAddressButton.toString());
@@ -135,8 +135,12 @@ public class MyAccountPage extends Utility {
     }
 
     public void clickOnCartButton() {
-        mouseHoverToElement(shoppingCartButton);
-        clickOnElement(checkOutButton);
+        try {
+            mouseHoverToElement(shoppingCartButton);
+            clickOnElement(checkOutButton);
+        } catch (Exception e) {
+            //
+        }
         log.info("Mouse Hover on Shopping Cart :" + shoppingCartButton.toString());
         log.info("Click on Shopping Cart :" + checkOutButton.toString());
     }
@@ -174,7 +178,7 @@ public class MyAccountPage extends Utility {
         log.info("Click on proceed to checkout :" + proceedToCheckOutOnShipping.toString());
     }
 
-    public void clickOnPayByCheck(){
+    public void clickOnPayByCheck() {
         clickOnElement(payByCheck);
         log.info("Click on Payby Check :" + payByCheck.toString());
     }
@@ -184,7 +188,7 @@ public class MyAccountPage extends Utility {
         log.info("Click on Confirm Order :" + confirmOrderButton.toString());
     }
 
-    public void clickOnContactUsButton(){
+    public void clickOnContactUsButton() {
         clickOnElement(contactUsButton);
         log.info("Click on Contact Us Button" + contactUsButton.toString());
     }

@@ -20,13 +20,15 @@ public class ProductSteps {
         for (List<String> data : productCart) {
             if (data.get(0).equalsIgnoreCase("Dresses")) {
                 new MyAccountPage().clickOnDressesTopMenu();
-                ;
             }
             if (data.get(1).equalsIgnoreCase("CASUAL DRESSES")) {
                 new MyAccountPage().clickOnCasualDressesLink();
             }
             if (data.get(2).equalsIgnoreCase("Printed Dress")) {
                 new CommonPage().clickOnPrintedDress();
+            }
+            if (data.get(3).equalsIgnoreCase("demo_3")) {
+                Assert.assertEquals(data.get(3), new ProductPage().getProductRefName());
             }
             if (data.get(4).equalsIgnoreCase("2")) {
                 new ProductPage().setQuantity();
@@ -44,6 +46,9 @@ public class ProductSteps {
             if (data.get(2).equalsIgnoreCase("Faded Short Sleeve T-shirts")) {
                 new CommonPage().clickOnFadedShortSleeveTShirt();
             }
+            if (data.get(3).equalsIgnoreCase("demo_1")) {
+                Assert.assertEquals(data.get(3), new ProductPage().getProductRefName());
+            }
             if (data.get(4).equalsIgnoreCase("3")) {
                 new ProductPage().setQuantity();
                 new ProductPage().setQuantity(data.get(4));
@@ -51,18 +56,19 @@ public class ProductSteps {
                 new ProductPage().setCloseConfirmMessage();
             }
         }
+        new MyAccountPage().clickOnCartButton();
     }
 
     @Then("^I shall validate shopping cart as below$")
     public void iShallValidateShoppingCartAsBelow(DataTable dataTable) {
         List<List<String>> productCart = dataTable.asLists(String.class);
-        for(List<String> data : productCart){
-            if(data.get(0).equalsIgnoreCase("Printed Dress")){
-                Assert.assertEquals(data,new MyAccountPage().getTextFromShoppingCartOfPrintedDress());
+        for (List<String> data : productCart) {
+            if (data.get(0).equalsIgnoreCase("Printed Dress")) {
+                Assert.assertEquals(data, new MyAccountPage().getTextFromShoppingCartOfPrintedDress());
             }
 
-            if(data.get(0).equalsIgnoreCase("Faded Short Sleeve T-shirts")){
-                Assert.assertEquals(data,new MyAccountPage().getTextFromShoppingCartOfFadedTShirt());
+            if (data.get(0).equalsIgnoreCase("Faded Short Sleeve T-shirts")) {
+                Assert.assertEquals(data, new MyAccountPage().getTextFromShoppingCartOfFadedTShirt());
             }
         }
     }

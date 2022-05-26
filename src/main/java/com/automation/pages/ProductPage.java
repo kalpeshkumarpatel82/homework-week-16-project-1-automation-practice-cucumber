@@ -30,6 +30,10 @@ public class ProductPage extends Utility {
     @FindBy(xpath = "//header/div[3]/div[1]/div[1]/div[4]/div[1]/div[1]/span[1]")
     WebElement closeConfirmMessage;
 
+    @CacheLookup
+    @FindBy(xpath = "//p[@id='product_reference']/span")
+    WebElement productRef;
+
     public void setQuantity(String text) {
         log.info("Sending text to Quantity : " + text + " to " + quantity.toString());
         sendTextToElement(quantity, text);
@@ -49,6 +53,12 @@ public class ProductPage extends Utility {
         log.info("Clicking on Close button " + closeConfirmMessage.toString());
 
         clickOnElement(closeConfirmMessage);
+    }
+
+    public String getProductRefName(){
+        log.info("Get Product Ref text : " + productRef.toString());
+        return getTextFromElement(productRef);
+
     }
 
 

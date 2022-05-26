@@ -5,7 +5,6 @@ Feature: SignUp, Sign In and Purchase Product
     Then Navigate to SignUp page
     And create an account with random username
 
-
   Scenario: TC-002 Sign In with newly created user credentials
     Given I am on the Sign In Page
     When Login using newly create credentials
@@ -21,11 +20,11 @@ Feature: SignUp, Sign In and Purchase Product
       | Women    | TOPS           | Faded Short Sleeve T-shirts | demo_1 | 3        |
     Then I shall validate shopping cart as below
      # | name                        | model        | quantity |
-      | Printed Dress               | SKU : demo_3 | 2        |
-      | Faded Short Sleeve T-shirts | SKU : demo_1 | 3        |
+      | Printed Dress               | SKU : demo_3 | 2 |
+      | Faded Short Sleeve T-shirts | SKU : demo_1 | 3 |
     Then I shall be able to Buy the product
     And I shall be able to Buy using cheque payment
-  @test
+
   Scenario: TC-004 Contact customer service for the previous successful order
     Given I am on the Sign In Page
     When Login using newly create credentials
