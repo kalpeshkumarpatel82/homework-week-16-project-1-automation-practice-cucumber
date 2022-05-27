@@ -7,7 +7,7 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.before({
-  "duration": 13911205700,
+  "duration": 9759881100,
   "status": "passed"
 });
 formatter.scenario({
@@ -39,12 +39,16 @@ formatter.step({
   "name": "I add below product to cart",
   "rows": [
     {
-      "comments": [
-        {
-          "line": 18,
-          "value": "#| category | subCategory    | name                        | model  | quantity |"
-        }
+      "cells": [
+        "category",
+        "subCategory",
+        "name",
+        "model",
+        "quantity"
       ],
+      "line": 18
+    },
+    {
       "cells": [
         "Dresses",
         "CASUAL DRESSES",
@@ -72,12 +76,14 @@ formatter.step({
   "name": "I shall validate shopping cart as below",
   "rows": [
     {
-      "comments": [
-        {
-          "line": 22,
-          "value": "# | name                        | model        | quantity |"
-        }
+      "cells": [
+        "name",
+        "model",
+        "quantity"
       ],
+      "line": 22
+    },
+    {
       "cells": [
         "Printed Dress",
         "SKU : demo_3",
@@ -110,46 +116,46 @@ formatter.match({
   "location": "SigInSteps.iAmOnTheSignInPage()"
 });
 formatter.result({
-  "duration": 11879486000,
+  "duration": 1699517300,
   "status": "passed"
 });
 formatter.match({
   "location": "SigInSteps.loginUsingNewlyCreateCredentials()"
 });
 formatter.result({
-  "duration": 17901780100,
+  "duration": 4209504900,
   "status": "passed"
 });
 formatter.match({
   "location": "ProductSteps.iAddBelowProductToCart(DataTable)"
 });
 formatter.result({
-  "duration": 62462868900,
+  "duration": 14856573100,
   "status": "passed"
 });
 formatter.match({
   "location": "ProductSteps.iShallValidateShoppingCartAsBelow(DataTable)"
 });
 formatter.result({
-  "duration": 124351700,
+  "duration": 145632800,
   "status": "passed"
 });
 formatter.match({
   "location": "ProductSteps.iShallBeAbleToBuyTheProduct()"
 });
 formatter.result({
-  "duration": 3779654300,
+  "duration": 5488577000,
   "status": "passed"
 });
 formatter.match({
   "location": "ProductSteps.iShallBeAbleToBuyUsingChequePayment()"
 });
 formatter.result({
-  "duration": 6425886200,
+  "duration": 4096533900,
   "status": "passed"
 });
 formatter.after({
-  "duration": 606967100,
+  "duration": 650679900,
   "status": "passed"
 });
 });

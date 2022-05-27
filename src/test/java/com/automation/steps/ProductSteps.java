@@ -12,29 +12,46 @@ import cucumber.api.java.en.Then;
 import org.junit.Assert;
 
 import java.util.List;
+import java.util.Map;
 
 public class ProductSteps {
     @And("^I add below product to cart$")
     public void iAddBelowProductToCart(DataTable dataTable) {
-        List<List<String>> productCart = dataTable.asLists(String.class);
-        for (List<String> data : productCart) {
-            new MyAccountPage().selectItemFromTopMenu(data.get(0));
-            new MyAccountPage().selectItemFromSubCategoryMenu(data.get(1));
-            new CommonPage().selectItemToBuy(data.get(2));
-            Assert.assertEquals(data.get(3), new ProductPage().getProductRefName());
-            new ProductPage().setQuantity(data.get(4));
+        List<Map<String, String>> productCart = dataTable.asMaps(String.class, String.class);
+        for (Map<String, String> data : productCart) {
+            new MyAccountPage().selectItemFromTopMenu(data.get("category"));
+            new MyAccountPage().selectItemFromSubCategoryMenu(data.get("subCategory"));
+            new CommonPage().selectItemToBuy(data.get("name"));
+            Assert.assertEquals(data.get("model"), new ProductPage().getProductRefName());
+            new ProductPage().setQuantity(data.get("quantity"));
             new ProductPage().setAddToCard();
             new ProductPage().setCloseConfirmMessage();
         }
         new MyAccountPage().clickOnCartButton();
+
+//        List<List<String>> productCart = dataTable.asLists(String.class);
+//        for (List<String> data : productCart) {
+//            new MyAccountPage().selectItemFromTopMenu(data.get(0));
+//            new MyAccountPage().selectItemFromSubCategoryMenu(data.get(1));
+//            new CommonPage().selectItemToBuy(data.get(2));
+//            Assert.assertEquals(data.get(3), new ProductPage().getProductRefName());
+//            new ProductPage().setQuantity(data.get(4));
+//            new ProductPage().setAddToCard();
+//            new ProductPage().setCloseConfirmMessage();
+//        }
+//        new MyAccountPage().clickOnCartButton();
     }
 
     @Then("^I shall validate shopping cart as below$")
     public void iShallValidateShoppingCartAsBelow(DataTable dataTable) {
-        List<List<String>> productCart = dataTable.asLists(String.class);
-        for (List<String> data : productCart) {
-            Assert.assertEquals(data, new MyAccountPage().getTextFromShoppingCart(data.get(0)));
+        List<Map<String, String >> productCart = dataTable.asMaps(String.class,String.class);
+        for (Map<String, String> data : productCart) {
+            Assert.assertEquals(data, new MyAccountPage().getTextFromShoppingCart(data.get("name")));
         }
+//        List<List<String>> productCart = dataTable.asLists(String.class);
+//        for (List<String> data : productCart) {
+//            Assert.assertEquals(data, new MyAccountPage().getTextFromShoppingCart(data.get(0)));
+//        }
     }
 
     @Then("^I shall be able to Buy the product$")

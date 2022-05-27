@@ -33,6 +33,4 @@ public class SigInSteps {
             Assert.assertEquals(expected[i], new MyAccountPage().getAddressInfo()[i]);
         }
     }
-
-
 }

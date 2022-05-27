@@ -22,6 +22,7 @@ public class ContactPage extends Utility {
     @CacheLookup
     @FindBy(xpath = "//select[@id='id_contact']")
     WebElement dropDownSubject;
+
     @CacheLookup
     @FindBy(xpath = "//select[@name='id_order']")
     WebElement dropDownOrderRef;

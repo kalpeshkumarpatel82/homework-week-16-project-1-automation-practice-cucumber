@@ -11,8 +11,9 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MyAccountPage extends Utility {
     private static final Logger log = LogManager.getLogger(MyAccountPage.class.getName());
@@ -155,19 +156,19 @@ public class MyAccountPage extends Utility {
         log.info("Click on Shopping Cart :" + checkOutButton.toString());
     }
 
-    public List<String> getTextFromShoppingCart(String text) {
+    public Map<String, String> getTextFromShoppingCart(String text) {
         if (text.equalsIgnoreCase("Printed Dress")) {
-            List<String> cartItem = new ArrayList<>();
-            cartItem.add(getTextFromElement(printedDressShoppingCart));
-            cartItem.add(getTextFromElement(printedDressSKU));
-            cartItem.add(getTextFromElementByValue(printedDressQty, "value"));
+            Map<String, String> cartItem = new HashMap<>();
+            cartItem.put("name", getTextFromElement(printedDressShoppingCart));
+            cartItem.put("model", getTextFromElement(printedDressSKU));
+            cartItem.put("quantity", getTextFromElementByValue(printedDressQty, "value"));
             return cartItem;
         }
         if (text.equalsIgnoreCase("Faded Short Sleeve T-shirts")) {
-            List<String> cartItem = new ArrayList<>();
-            cartItem.add(getTextFromElement(fadedTShirtShoppingCart));
-            cartItem.add(getTextFromElement(fadedTShirtSKU));
-            cartItem.add(getTextFromElementByValue(fadedTShirtQty, "value"));
+            Map<String, String> cartItem = new HashMap<>();
+            cartItem.put("name",getTextFromElement(fadedTShirtShoppingCart));
+            cartItem.put("model",getTextFromElement(fadedTShirtSKU));
+            cartItem.put("quantity",getTextFromElementByValue(fadedTShirtQty, "value"));
             return cartItem;
         }
         return null;
@@ -204,5 +205,4 @@ public class MyAccountPage extends Utility {
         clickOnElement(contactUsButton);
         log.info("Click on Contact Us Button" + contactUsButton.toString());
     }
-
 }
