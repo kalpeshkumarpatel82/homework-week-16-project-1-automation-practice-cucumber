@@ -15,7 +15,7 @@ Feature: SignUp, Sign In and Purchase Product
     Given I am on the Sign In Page
     When Login using newly create credentials
     And I add below product to cart
-      | category | subCategory    | name                        | model  | quantity |
+      #| category | subCategory    | name                        | model  | quantity |
       | Dresses  | CASUAL DRESSES | Printed Dress               | demo_3 | 2        |
       | Women    | TOPS           | Faded Short Sleeve T-shirts | demo_1 | 3        |
     Then I shall validate shopping cart as below

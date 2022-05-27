@@ -27,15 +27,14 @@ public class CommonPage extends Utility {
     @FindBy(xpath = "//ul[@class='product_list grid row']//a[@class='product-name' and contains(text(),'Faded Short Sleeve T-shirts')]")
     WebElement fadedShortSleeveTShirts;
 
-    public void clickOnPrintedDress(){
-        clickOnElement(printedDress);
-        log.info("Entering Printed Dress Account" + printedDress.toString());
+    public void selectItemToBuy(String text){
+        if(text.equalsIgnoreCase("Printed Dress")) {
+            clickOnElement(printedDress);
+            log.info("Entering Printed Dress Account" + printedDress.toString());
+        }
+        if(text.equalsIgnoreCase("Faded Short Sleeve T-shirts")){
+            clickOnElement(fadedShortSleeveTShirts);
+            log.info("Entering Faced Short Sleeve T-Shirts" + fadedShortSleeveTShirts.toString());
+        }
     }
-
-    public void clickOnFadedShortSleeveTShirt(){
-        clickOnElement(fadedShortSleeveTShirts);
-        log.info("Entering Faced Short Sleeve T-Shirts" + fadedShortSleeveTShirts.toString());
-    }
-
-
 }

@@ -36,12 +36,8 @@ public class ProductPage extends Utility {
 
     public void setQuantity(String text) {
         log.info("Sending text to Quantity : " + text + " to " + quantity.toString());
-        sendTextToElement(quantity, text);
-    }
-
-    public void setQuantity() {
-        log.info("Clearing Quantity " + quantity.toString());
         sendTextToElement(quantity);
+        sendTextToElement(quantity, text);
     }
 
     public void setAddToCard() {
@@ -51,15 +47,11 @@ public class ProductPage extends Utility {
 
     public void setCloseConfirmMessage() {
         log.info("Clicking on Close button " + closeConfirmMessage.toString());
-
         clickOnElement(closeConfirmMessage);
     }
 
     public String getProductRefName(){
         log.info("Get Product Ref text : " + productRef.toString());
         return getTextFromElement(productRef);
-
     }
-
-
 }

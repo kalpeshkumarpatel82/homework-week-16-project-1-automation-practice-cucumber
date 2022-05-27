@@ -48,6 +48,7 @@ public class MyAccountPage extends Utility {
     @CacheLookup
     @FindBy(xpath = "//header/div[3]/div[1]/div[1]/div[3]/div[1]/a[1]")
     WebElement shoppingCartButton;
+
     @CacheLookup
     @FindBy(xpath = "//p/a/span[contains(text(),'Check out')]")
     WebElement checkOutButton;
@@ -79,18 +80,23 @@ public class MyAccountPage extends Utility {
     @CacheLookup
     @FindBy(xpath = "//body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/p[2]/a[1]/span[1]")
     WebElement proceedToCheckOut;
+
     @CacheLookup
     @FindBy(xpath = "//body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/form[1]/p[1]/button[1]/span[1]")
     WebElement proceedToCheckOutOnAddress;
+
     @CacheLookup
     @FindBy(xpath = "//body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/form[1]/p[1]/button[1]/span[1]")
     WebElement proceedToCheckOutOnShipping;
+
     @CacheLookup
     @FindBy(xpath = "//input[@id='cgv']")
     WebElement optInTerms;
+
     @CacheLookup
     @FindBy(xpath = "//body/div[@id='page']/div[2]/div[1]/div[3]/div[1]/div[1]/div[3]/div[2]/div[1]/p[1]/a[1]")
     WebElement payByCheck;
+
     @CacheLookup
     @FindBy(xpath = "//body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/form[1]/p[1]/button[1]/span[1]")
     WebElement confirmOrderButton;
@@ -114,24 +120,28 @@ public class MyAccountPage extends Utility {
         return addressInfo;
     }
 
-    public void clickOnDressesTopMenu() {
-        clickOnElement(topMenuDresses);
-        log.info("Mouse Hover to Dresses from Top Menu :" + topMenuDresses.toString());
+    public void selectItemFromTopMenu(String text) {
+        if (text.equalsIgnoreCase("Dresses")) {
+            clickOnElement(topMenuDresses);
+            log.info("Click on Dresses from Top Menu :" + topMenuDresses.toString());
+
+        }
+        if (text.equalsIgnoreCase("Women")) {
+            clickOnElement(topMenuWomen);
+            log.info("Click on Women from Top Menu :" + topMenuDresses.toString());
+        }
     }
 
-    public void clickOnCasualDressesLink() {
-        clickOnElement(causalDresses);
-        log.info("Click on Casual Dress :" + causalDresses.toString());
-    }
+    public void selectItemFromSubCategoryMenu(String text) {
+        if (text.equalsIgnoreCase("CASUAL DRESSES")) {
+            clickOnElement(causalDresses);
+            log.info("Click on Casual Dresses from Sub Category Menu :" + causalDresses.toString());
 
-    public void clickOnWomenTab() {
-        clickOnElement(topMenuWomen);
-        log.info("MouseHover on Women Tab :" + topMenuDresses.toString());
-    }
-
-    public void clickOnTopMenu() {
-        clickOnElement(topMenuTopTab);
-        log.info("Click on Top Tab :" + topMenuTopTab.toString());
+        }
+        if (text.equalsIgnoreCase("TOPS")) {
+            clickOnElement(topMenuTopTab);
+            log.info("Click on Women from Top Menu :" + topMenuTopTab.toString());
+        }
     }
 
     public void clickOnCartButton() {
@@ -145,20 +155,22 @@ public class MyAccountPage extends Utility {
         log.info("Click on Shopping Cart :" + checkOutButton.toString());
     }
 
-    public List<String> getTextFromShoppingCartOfPrintedDress() {
-        List<String> cartItem = new ArrayList<>();
-        cartItem.add(getTextFromElement(printedDressShoppingCart));
-        cartItem.add(getTextFromElement(printedDressSKU));
-        cartItem.add(getTextFromElementByValue(printedDressQty, "value"));
-        return cartItem;
-    }
-
-    public List<String> getTextFromShoppingCartOfFadedTShirt() {
-        List<String> cartItem = new ArrayList<>();
-        cartItem.add(getTextFromElement(fadedTShirtShoppingCart));
-        cartItem.add(getTextFromElement(fadedTShirtSKU));
-        cartItem.add(getTextFromElementByValue(fadedTShirtQty, "value"));
-        return cartItem;
+    public List<String> getTextFromShoppingCart(String text) {
+        if (text.equalsIgnoreCase("Printed Dress")) {
+            List<String> cartItem = new ArrayList<>();
+            cartItem.add(getTextFromElement(printedDressShoppingCart));
+            cartItem.add(getTextFromElement(printedDressSKU));
+            cartItem.add(getTextFromElementByValue(printedDressQty, "value"));
+            return cartItem;
+        }
+        if (text.equalsIgnoreCase("Faded Short Sleeve T-shirts")) {
+            List<String> cartItem = new ArrayList<>();
+            cartItem.add(getTextFromElement(fadedTShirtShoppingCart));
+            cartItem.add(getTextFromElement(fadedTShirtSKU));
+            cartItem.add(getTextFromElementByValue(fadedTShirtQty, "value"));
+            return cartItem;
+        }
+        return null;
     }
 
     public void clickOnProceedToCheckOut() {

@@ -18,43 +18,13 @@ public class ProductSteps {
     public void iAddBelowProductToCart(DataTable dataTable) {
         List<List<String>> productCart = dataTable.asLists(String.class);
         for (List<String> data : productCart) {
-            if (data.get(0).equalsIgnoreCase("Dresses")) {
-                new MyAccountPage().clickOnDressesTopMenu();
-            }
-            if (data.get(1).equalsIgnoreCase("CASUAL DRESSES")) {
-                new MyAccountPage().clickOnCasualDressesLink();
-            }
-            if (data.get(2).equalsIgnoreCase("Printed Dress")) {
-                new CommonPage().clickOnPrintedDress();
-            }
-            if (data.get(3).equalsIgnoreCase("demo_3")) {
-                Assert.assertEquals(data.get(3), new ProductPage().getProductRefName());
-            }
-            if (data.get(4).equalsIgnoreCase("2")) {
-                new ProductPage().setQuantity();
-                new ProductPage().setQuantity(data.get(4));
-                new ProductPage().setAddToCard();
-                new ProductPage().setCloseConfirmMessage();
-            }
-
-            if (data.get(0).equalsIgnoreCase("Women")) {
-                new MyAccountPage().clickOnWomenTab();
-            }
-            if (data.get(1).equalsIgnoreCase("TOPS")) {
-                new MyAccountPage().clickOnTopMenu();
-            }
-            if (data.get(2).equalsIgnoreCase("Faded Short Sleeve T-shirts")) {
-                new CommonPage().clickOnFadedShortSleeveTShirt();
-            }
-            if (data.get(3).equalsIgnoreCase("demo_1")) {
-                Assert.assertEquals(data.get(3), new ProductPage().getProductRefName());
-            }
-            if (data.get(4).equalsIgnoreCase("3")) {
-                new ProductPage().setQuantity();
-                new ProductPage().setQuantity(data.get(4));
-                new ProductPage().setAddToCard();
-                new ProductPage().setCloseConfirmMessage();
-            }
+            new MyAccountPage().selectItemFromTopMenu(data.get(0));
+            new MyAccountPage().selectItemFromSubCategoryMenu(data.get(1));
+            new CommonPage().selectItemToBuy(data.get(2));
+            Assert.assertEquals(data.get(3), new ProductPage().getProductRefName());
+            new ProductPage().setQuantity(data.get(4));
+            new ProductPage().setAddToCard();
+            new ProductPage().setCloseConfirmMessage();
         }
         new MyAccountPage().clickOnCartButton();
     }
@@ -63,13 +33,7 @@ public class ProductSteps {
     public void iShallValidateShoppingCartAsBelow(DataTable dataTable) {
         List<List<String>> productCart = dataTable.asLists(String.class);
         for (List<String> data : productCart) {
-            if (data.get(0).equalsIgnoreCase("Printed Dress")) {
-                Assert.assertEquals(data, new MyAccountPage().getTextFromShoppingCartOfPrintedDress());
-            }
-
-            if (data.get(0).equalsIgnoreCase("Faded Short Sleeve T-shirts")) {
-                Assert.assertEquals(data, new MyAccountPage().getTextFromShoppingCartOfFadedTShirt());
-            }
+            Assert.assertEquals(data, new MyAccountPage().getTextFromShoppingCart(data.get(0)));
         }
     }
 

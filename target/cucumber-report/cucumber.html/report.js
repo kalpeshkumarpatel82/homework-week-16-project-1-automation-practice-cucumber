@@ -7,7 +7,7 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.before({
-  "duration": 6163355300,
+  "duration": 13911205700,
   "status": "passed"
 });
 formatter.scenario({
@@ -39,16 +39,12 @@ formatter.step({
   "name": "I add below product to cart",
   "rows": [
     {
-      "cells": [
-        "category",
-        "subCategory",
-        "name",
-        "model",
-        "quantity"
+      "comments": [
+        {
+          "line": 18,
+          "value": "#| category | subCategory    | name                        | model  | quantity |"
+        }
       ],
-      "line": 18
-    },
-    {
       "cells": [
         "Dresses",
         "CASUAL DRESSES",
@@ -114,46 +110,46 @@ formatter.match({
   "location": "SigInSteps.iAmOnTheSignInPage()"
 });
 formatter.result({
-  "duration": 3238872499,
+  "duration": 11879486000,
   "status": "passed"
 });
 formatter.match({
   "location": "SigInSteps.loginUsingNewlyCreateCredentials()"
 });
 formatter.result({
-  "duration": 2176520500,
+  "duration": 17901780100,
   "status": "passed"
 });
 formatter.match({
   "location": "ProductSteps.iAddBelowProductToCart(DataTable)"
 });
 formatter.result({
-  "duration": 24193283300,
+  "duration": 62462868900,
   "status": "passed"
 });
 formatter.match({
   "location": "ProductSteps.iShallValidateShoppingCartAsBelow(DataTable)"
 });
 formatter.result({
-  "duration": 138246400,
+  "duration": 124351700,
   "status": "passed"
 });
 formatter.match({
   "location": "ProductSteps.iShallBeAbleToBuyTheProduct()"
 });
 formatter.result({
-  "duration": 3863360000,
+  "duration": 3779654300,
   "status": "passed"
 });
 formatter.match({
   "location": "ProductSteps.iShallBeAbleToBuyUsingChequePayment()"
 });
 formatter.result({
-  "duration": 7862423101,
+  "duration": 6425886200,
   "status": "passed"
 });
 formatter.after({
-  "duration": 612444200,
+  "duration": 606967100,
   "status": "passed"
 });
 });
